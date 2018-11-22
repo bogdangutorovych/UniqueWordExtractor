@@ -2,7 +2,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Result {
-    private Map<String,Integer> words;
+    private Map<String, Integer> words;
 
     public void setWords(Map<String, Integer> words) {
         this.words = words;
@@ -30,14 +30,20 @@ public class Result {
                 e -> e.getKey().length() < wordLength || e.getValue() <= wordNumber);
     }
 
-    public void sortByValueDesc() {
+    public void sortByValue(boolean order) {
         List<Map.Entry<String, Integer>> list = new ArrayList<>(words.entrySet());
         list.sort(Map.Entry.comparingByValue());
-        Collections.reverse(list);
+        if (!order) {
+            Collections.reverse(list);
+        }
         Map<String, Integer> sortedMap = list.stream().collect(Collectors.toMap(
-                Map.Entry::getKey, Map.Entry::getValue, (v1,v2)->v1, LinkedHashMap::new));
+                Map.Entry::getKey, Map.Entry::getValue, (v1, v2) -> v1, LinkedHashMap::new));
 
         setWords(sortedMap);
     }
 
+    public void sortByKey() {
+        Map<String, Integer> sortedMap = new TreeMap<>(words);
+        setWords(sortedMap);
+    }
 }

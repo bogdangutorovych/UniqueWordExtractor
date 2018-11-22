@@ -1,7 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
+import java.util.Arrays;
 
 public class Runner {
 
@@ -24,8 +24,9 @@ public class Runner {
                 }
             }
 
-            result.sortByValueDesc();
-            result.narrowResult(4,20);
+            result.narrowResult(3, 9);
+//            result.sortByValue(false);
+            result.sortByKey();
             consoleWriter.print(result.getWords());
 
         } catch (IOException e) {
