@@ -25,7 +25,7 @@ public class Result {
         }
     }
 
-    public void narrowResult (int wordLength, int wordNumber) {
+    public void narrowResult(int wordLength, int wordNumber) {
         words.entrySet().removeIf(
                 e -> e.getKey().length() < wordLength || e.getValue() <= wordNumber);
     }
