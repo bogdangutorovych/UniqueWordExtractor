@@ -1,7 +1,9 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Arrays;
+import java.util.Map;
 
 public class Runner {
 
@@ -10,6 +12,7 @@ public class Runner {
         Result result = new Result();
         StringParser stringParser = new StringParser();
         ConsoleWriter consoleWriter = new ConsoleWriter();
+        LingvoApiImpl lingvoApi = new LingvoApiImpl();
 
         try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/hp_all.txt"))) {
 
@@ -25,8 +28,8 @@ public class Runner {
             }
 
             result.narrowResult(3, 9);
-//            result.sortByValue(false);
-            result.sortByKey();
+            result.sortByValue(false);
+//            result.sortByKey();
             consoleWriter.print(result.getWords());
 
         } catch (IOException e) {
